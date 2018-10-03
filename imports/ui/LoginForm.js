@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import { Accounts } from "meteor/accounts-base";
 
-class LoginForm extends Component {
-  loginUser = (event) => {
-    event.preventDefault();
-    Meteor.loginWithPassword(
-      this.email.value, this.password.value, error => {
-        console.log(error);
-      });
+export default class LoginForm extends Component {
+  login = e => {
+    e.preventDefault();
+    Meteor.loginWithPassword(this.email.value, this.password.value, error => {
+      console.log(error);
+    });
   };
 
   render() {
     return (
-      <form onSubmit={this.registerUser}>
+      <form onSubmit={this.login}>
         <input type="email" ref={input => (this.email = input)} />
         <input type="password" ref={input => (this.password = input)} />
-        <button tpye="submit">Login User</button>
+        <button type="submit">Login User</button>
       </form>
     );
   }
 }
-
-export default LoginForm;
