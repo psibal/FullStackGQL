@@ -9,28 +9,10 @@ import UsersSchema from '../../api/users/User.graphql';
 import ResolutionsResolvers from "../../api/resolutions/resolvers";
 import UsersResolvers from '../../api/users/resolvers';
 
-const testSchema = `
-type Query {
-  hi: String
-  resolutions: [Resolution]
-  user: User
-}
-`;
-//
+// jkl
+const typeDefs = [ResolutionsSchema, UsersSchema];
 
-
-const typeDefs = [testSchema, ResolutionsSchema, UsersSchema];
-
-const testResolvers = {
-  Query: {
-    hi() {
-      return "Hello Level Up";
-    }
-  }
-};
-
-const resolvers = merge(
-  testResolvers, 
+const resolvers = merge( 
   ResolutionsResolvers, 
   UsersResolvers
 );
