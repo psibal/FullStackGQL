@@ -3,6 +3,8 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
 import ResolutionForm from './ResolutionForm';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
 class App extends Component {
   displayResolutions() {
@@ -22,10 +24,11 @@ class App extends Component {
     }
   };
   render() {
-    console.log(Accounts);
     return (
       <div>
         <h1>Full Stack GraphQL</h1>
+        <RegisterForm />
+        <LoginForm />
         <ResolutionForm />
         <ul>
           {this.displayResolutions()}
