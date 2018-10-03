@@ -6,15 +6,14 @@ import ResolutionForm from './ResolutionForm';
 
 class App extends Component {
   displayResolutions() {
-    const { data } = this.props;
-    console.log(data);
-    if(data.loading) {
+    const { loading, resolutions } = this.props;
+    if (loading) {
       return (
         <li>Loading...</li>
       )
     } else {
       return (
-        data.resolutions.map(resolution => {
+        resolutions.map(resolution => {
           return (
             <li key={resolution._id}>{resolution.name}</li>
           )
@@ -23,11 +22,10 @@ class App extends Component {
     }
   };
   render() {
-    const { data } = this.props;
     return (
       <div>
         <h1>Full Stack GraphQL</h1>
-        <ResolutionForm refetch={data.refetch}/>
+        <ResolutionForm />
         <ul>
           {this.displayResolutions()}
         </ul>
@@ -36,9 +34,8 @@ class App extends Component {
   }
 }
 
-const hiQuery = gql`
-  {
-    hi
+const resolutionsQuery = gql`
+  query Resolutions {
     resolutions {
       _id
       name
@@ -46,4 +43,6 @@ const hiQuery = gql`
   }
 `;
 
-export default graphql(hiQuery)(App);
+export default graphql(resolutionsQuery, {
+  props: ({ data }) => ({ ...data })
+})(App);
