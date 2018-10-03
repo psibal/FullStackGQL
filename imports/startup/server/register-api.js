@@ -4,9 +4,8 @@ import merge from "lodash/merge";
 
 import ResolutionsSchema from "../../api/resolutions/resolution.graphql";
 import ResolutionsResolvers from "../../api/resolutions/resolvers";
-// 
-// 
-//
+import UsersSchema from '../../api/users/User.graphql';
+
 const testSchema = `
 type Query {
   hi: String
@@ -14,7 +13,7 @@ type Query {
 }
 `;
 
-const typeDefs = [testSchema, ResolutionsSchema];
+const typeDefs = [testSchema, ResolutionsSchema, UsersSchema];
 
 const testResolvers = {
   Query: {
