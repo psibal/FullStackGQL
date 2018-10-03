@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
+import ResolutionForm from './ResolutionForm';
+
 class App extends Component {
   displayResolutions() {
     const { data } = this.props;
@@ -21,9 +23,11 @@ class App extends Component {
     }
   };
   render() {
+    const { data } = this.props;
     return (
       <div>
         <h1>Full Stack GraphQL</h1>
+        <ResolutionForm refetch={data.refetch}/>
         <ul>
           {this.displayResolutions()}
         </ul>
