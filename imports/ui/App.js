@@ -27,8 +27,12 @@ class App extends Component {
     return (
       <div>
         <h1>Full Stack GraphQL</h1>
+        <h3>Register</h3>
         <RegisterForm />
+        <h3>Login</h3>
         <LoginForm />
+        <button onClick={() => Meteor.logout()} >Logout</button>
+        <h3>new resolution</h3>
         <ResolutionForm />
         <ul>
           {this.displayResolutions()}

@@ -8,8 +8,8 @@ class RegisterForm extends Component {
       email: this.email.value,
       password: this.password.value
     },
-    error=> {
-      console.log(error);
+    error => {
+      console.log(error.message);
     });
   };
   
