@@ -22,6 +22,7 @@ class App extends Component {
     }
   };
   render() {
+    console.log(Accounts);
     return (
       <div>
         <h1>Full Stack GraphQL</h1>
