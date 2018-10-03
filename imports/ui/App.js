@@ -1,15 +1,12 @@
-// Modules
 import React from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { withApollo } from "react-apollo";
-
-// Components
 import ResolutionForm from "./ResolutionForm";
+import GoalForm from "./GoalForm";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
-import GoalForm from './GoalForm';
-import Goal from './resolutions/Goal';
+import Goal from "./resolutions/Goal";
 
 const App = ({ loading, resolutions, client, user }) => {
   if (loading) return null;
@@ -23,26 +20,25 @@ const App = ({ loading, resolutions, client, user }) => {
           }}
         >
           Logout
-      </button>
-
+        </button>
       ) : (
-          <div>
-            <RegisterForm client={client} />
-            <LoginForm client={client} />
-          </div>
-        )}
-        <h3>add resolution</h3>
+        <div>
+          <RegisterForm client={client} />
+          <LoginForm client={client} />
+        </div>
+      )}
       <ResolutionForm />
       <ul>
         {resolutions.map(resolution => (
           <li key={resolution._id}>
-          {resolution.name}
-          <ul>
-            { resolution.goals.map(goal => (
-              <Goal goal={goal} key={goal._id} />
-            )) }
-          </ul>
-          <GoalForm resolutionId={resolution._id} />
+            {resolution.name}
+            <ul>
+              {resolution.goals.map(goal => (
+                // console.log(goal)
+                <Goal goal={goal} key={goal._id} />
+              ))}
+            </ul>
+            <GoalForm resolutionId={resolution._id} />
           </li>
         ))}
       </ul>
@@ -58,6 +54,7 @@ const resolutionsQuery = gql`
       goals {
         _id
         name
+        completed
       }
     }
     user {
