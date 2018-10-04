@@ -31,10 +31,13 @@ const App = ({ loading, resolutions, client, user }) => {
       <ul>
         {resolutions.map(resolution => (
           <li key={resolution._id}>
+          <span style={{
+            textDecoration: resolution.completed ? 'line-through' : 'none'
+          }}>
             {resolution.name}
+          </span>
             <ul>
               {resolution.goals.map(goal => (
-                // console.log(goal)
                 <Goal goal={goal} key={goal._id} />
               ))}
             </ul>
@@ -51,6 +54,7 @@ const resolutionsQuery = gql`
     resolutions {
       _id
       name
+      completed
       goals {
         _id
         name

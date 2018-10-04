@@ -11,7 +11,7 @@ import ResolutionsResolvers from "../../api/resolutions/resolvers";
 import UsersResolvers from '../../api/users/resolvers';
 import GoalsResolver from '../../api/goals/resolvers'
 
-// testtest
+// testtesttest
 const typeDefs = [ResolutionsSchema, UsersSchema, GoalsSchema];
 
 const resolvers = merge( 
